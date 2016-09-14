@@ -1,0 +1,64 @@
+/* Empty. Add your own CSS if you like */
+.subtitle {
+    font-size: 0.8em;   
+}
+
+h1.title {
+ font-size:1.2em;   
+}
+
+h1.title_centered {
+    font-size:1.2em;   
+    text-align: center;
+}
+img.home {
+ height: 80px;   
+}
+.centered {
+  width:100%;
+  text-align: center;
+}
+
+.alert-danger {
+    color: #a94442;
+    margin: 20px 10px;
+    text-align: center;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px; 
+}
+
+.logo_bar {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    height:90px;
+    text-align: center;
+}
+
+.logo_bar img {
+    width:100%;   
+}
+
+p.available, p.loaned, p.Requested, p.Ongoing, p.Rejected, p.ClosePending, p.Closed {
+   width:100%;
+   color: #33cd5f;
+   text-align: right; 
+   vertical-align: middle;
+}
+
+p.available {
+   color: #33cd5f;   
+}
+
+p.loaned, p.Rejected {
+   color: #a94442;   
+}
+
+p.Requested, p.ClosePending {
+   color: #ffc900;   
+}

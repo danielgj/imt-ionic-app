@@ -1,0 +1,19 @@
+<ion-view view-title="Loan Detail">
+  <ion-content>
+    <div class="card">
+      <div class="item item-text-wrap">
+          <h1 class="title">Item</h1>
+          {{loan.item.name}}
+          <h1 class="title">Date</h1>
+          {{loan.requestDate}}
+          <h1 class="title">State</h1>
+          {{loan.state}}
+          <h1 class="title" ng-show="loan.comments && loan.comments!=''">Notes</h1>
+          {{loan.comments}}
+      </div>      
+    </div>
+  </ion-content>
+  <div class="bar bar-footer bar-stable" ng-show="loan.state=='Ongoing'">
+      <button class="button button-clear" ng-click="returnItem(loan)">Return</button>
+  </div>
+</ion-view>

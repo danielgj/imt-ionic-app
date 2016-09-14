@@ -1,0 +1,26 @@
+<ion-view>
+  <ion-nav-title>{{item.name}}</ion-nav-title>
+  <ion-content>
+    <div class="card">
+      <div class="item item-text-wrap">
+          <h1 class="title">Category</h1>
+          {{item.category.category}}
+          <h1 class="title">Brand</h1>
+          {{item.brand.brand}}
+          <h1 class="title">Model</h1>
+          {{item.model}}
+          <h1 class="title" ng-show="item.os && item.os!=''">Operating System</h1>
+          {{item.os}}
+          <h1 class="title" ng-show="item.owner && item.owner!=''">Owner</h1>
+          {{item.owner}}
+          <h1 class="title" ng-show="item.notes && item.notes!=''">Notes</h1>
+          {{item.notes}}
+      </div>      
+    </div>      
+    <div class="alert alert-danger" ng-show="withError">{{errorMsg}}</div>    
+  </ion-content>
+  <div class="bar bar-footer bar-stable">
+      <button class="button button-clear" ng-show="!item.available" ng-click="viewLoan(item.loan)">View Loan</button>
+      <button class="button button-clear" ng-show="item.available" ng-click="requestLoan(item)">Request Loan</button>
+  </div>
+</ion-view>

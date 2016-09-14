@@ -1,0 +1,26 @@
+<ion-view view-title="Inventory">  
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="item in filteredInventory = (inventory | filter: filterInv)" href="#/app/inventory/{{item._id}}">
+            <div class="row">
+                <div class="col col-67">
+                    <h1 class="title">{{item.name}}</h1>
+                    {{item.category.category}} ({{item.brand.brand}})
+                </div>
+                <div class="col col-33">
+                    <p class="available" ng-show="item.available">Available</p>  
+                    <p class="loaned" ng-show="!item.available">Loaned</p>  
+                </div>
+            </div>
+            <ion-option-button class="button-calm icon ion-log-in" ng-show="item.available"  ng-click="requestLoan({{item}})"></ion-option-button>
+      </ion-item>
+    </ion-list>
+    <div class="alert alert-danger" ng-show="filteredInventory.length==0">There are no items in the inventory or no items matching the filter</div>
+      
+  </ion-content>
+  <ion-tabs>
+    <ion-tab title="All" ng-click="showAll()"></ion-tab>
+    <ion-tab title="Available" ng-click="showAvailable()"></ion-tab>
+    <ion-tab title="Loaned" ng-click="showLoaned()"></ion-tab>
+  </ion-tabs>
+</ion-view>

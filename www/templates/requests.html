@@ -1,0 +1,25 @@
+<ion-view view-title="Requests">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="item in filteredLoans = (pending_loans | filter: filterRequests)" href="#/app/requests/{{item._id}}">
+          <div class="row">
+            <div class="col col-67">
+                <h1 class="title">{{item.item.name}}</h1>
+                {{item.updatedAt | date}}
+            </div>
+            <div class="col col-33">
+                <p class="{{item.state}}">{{item.state}}</p>
+            </div>
+          </div>
+          <ion-option-button class="button-balanced icon ion-checkmark-circled" ng-click="approveRequest({{item}})"></ion-option-button>
+          <ion-option-button class="button-assertive icon ion-close-circled" ng-click="rejectRequest({{item}})"></ion-option-button>
+      </ion-item>
+    </ion-list>
+    <div class="alert alert-danger" ng-show="filteredLoans.length==0">There are no pending requests or no pending requests matching the filter</div>    
+  </ion-content>
+  <ion-tabs>
+    <ion-tab title="All" ng-click="showAll()"></ion-tab>
+    <ion-tab title="Loan" ng-click="showLoan()"></ion-tab>
+    <ion-tab title="Return" ng-click="showReturn()"></ion-tab>    
+  </ion-tabs>
+</ion-view>

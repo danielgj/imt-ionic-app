@@ -1,0 +1,22 @@
+<ion-view view-title="Request Detail">
+  <ion-content>
+    <div class="card">
+      <div class="item item-text-wrap">
+          <h1 class="title">Item</h1>
+          {{request.item.name}}
+          <h1 class="title">Requestor</h1>
+          {{request.user.firstname}} {{request.user.lastname}} 
+          <h1 class="title">Date</h1>
+          {{request.requestDate}}
+          <h1 class="title" ng-show="request.comments && request.comments!=''">Notes</h1>
+          {{request.comments}}
+          <h1 class="title">State</h1>
+          {{request.state}}          
+      </div>      
+    </div>
+  </ion-content>
+  <div class="bar bar-footer bar-stable">
+      <button class="button button-clear" ng-click="approveRequest(request)">Approve</button>
+      <button class="button button-clear" ng-click="rejectRequest(request)">Reject</button>
+  </div>
+</ion-view>
