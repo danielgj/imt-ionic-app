@@ -73,7 +73,7 @@ angular.module('smtApp.controllers', [])
                 }).catch(function(err) {
                     $ionicLoading.hide();
                     $rootScope.withError = true;
-                    $rootScope.errorMsg = err;                    
+                    $rootScope.errorMsg = err.data.err.message;                    
                 });
             } else {
                 $rootScope.withError = true;
