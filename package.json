@@ -1,7 +1,13 @@
 {
   "name": "IMT",
-  "version": "1.1.1",
   "description": "IMT App. Ionic app developed for Coursera's Capstone Project",
+  "version": "1.0.0",
+  "description": "Ionic Mobile App for Inventory Management Tool (Coursera MEAN Stack Certification Capstone Project)",
+  "author": "Daniel García Jones <danielgj@gmail.com>",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/danielgj/imt-ionic-app"
+  },
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
