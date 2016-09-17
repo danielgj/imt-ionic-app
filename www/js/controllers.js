@@ -1,6 +1,6 @@
 angular.module('smtApp.controllers', [])
 
-.controller('AppCtrl', function($scope, $rootScope, $http, $ionicModal, $ionicHistory, $ionicPopup, $state, Utils, $ionicLoading) {
+.controller('AppCtrl', function($scope, $rootScope, $http, $ionicModal, $ionicHistory, $ionicPopup, $state, Utils, configService, $ionicLoading) {
     
     // Form data for the login modal
     $scope.loginData = {};
@@ -34,7 +34,7 @@ angular.module('smtApp.controllers', [])
             
                 $http({
                     method: 'POST',
-                    url: url_base_api + 'users/login/',
+                    url: configService.url_base_api + 'users/login/',
                     headers: {
                        "Accept": "application/json;charset=utf-8"
                    },
@@ -73,7 +73,7 @@ angular.module('smtApp.controllers', [])
                 }).catch(function(err) {
                     $ionicLoading.hide();
                     $rootScope.withError = true;
-                    $rootScope.errorMsg = err;                    
+                    $rootScope.errorMsg = err.data.err.message;                    
                 });
             } else {
                 $rootScope.withError = true;
@@ -106,7 +106,7 @@ angular.module('smtApp.controllers', [])
 
 })
             
-.controller('InventoryCtrl', function($scope, $http, $rootScope, $state, dataService, Utils, $http, $ionicPopup, $ionicListDelegate, $ionicLoading, $ionicTabsDelegate) {
+.controller('InventoryCtrl', function($scope, $http, $rootScope, $state, dataService, Utils, configService, $http, $ionicPopup, $ionicListDelegate, $ionicLoading, $ionicTabsDelegate) {
 
       
       //Fill Master Data
@@ -230,7 +230,7 @@ angular.module('smtApp.controllers', [])
                     
                     $http({
                         method: 'POST',
-                          url: url_base_api + 'loans/',
+                          url: configService.url_base_api + 'loans/',
                           headers: {
                              "Accept": "application/json;charset=utf-8",
                              "Authorization" : "Bearer " + $rootScope.token
@@ -334,7 +334,7 @@ angular.module('smtApp.controllers', [])
       
 })
             
-.controller('InventoryDetailCtrl', function($scope, $rootScope, $stateParams, $state, $location, $http, $ionicPopup, dataService, Utils, $ionicLoading) { 
+.controller('InventoryDetailCtrl', function($scope, $rootScope, $stateParams, $state, $location, $http, $ionicPopup, dataService, Utils, configService, $ionicLoading) { 
 
     if(!Utils.isUndefinedOrNull($rootScope.user)) {
           
@@ -416,7 +416,7 @@ angular.module('smtApp.controllers', [])
                     
                     $http({
                         method: 'POST',
-                          url: url_base_api + 'loans/',
+                          url: configService.url_base_api + 'loans/',
                           headers: {
                              "Accept": "application/json;charset=utf-8",
                              "Authorization" : "Bearer " + $rootScope.token
@@ -463,7 +463,7 @@ angular.module('smtApp.controllers', [])
     }
 })
             
-.controller('LoansCtrl', function($scope, $http, $rootScope, $state, dataService, Utils, $ionicListDelegate, $ionicPopup, $ionicLoading, $ionicTabsDelegate) {
+.controller('LoansCtrl', function($scope, $http, $rootScope, $state, dataService, Utils, configService, $ionicListDelegate, $ionicPopup, $ionicLoading, $ionicTabsDelegate) {
     
         $scope.selectedFilter = 0;
       
@@ -523,7 +523,7 @@ angular.module('smtApp.controllers', [])
 
                         $http({
                               method: 'PUT',
-                              url: url_base_api + 'loans/' + itemParsed._id,
+                              url: configService.url_base_api + 'loans/' + itemParsed._id,
                               headers: {
                                  "Accept": "application/json;charset=utf-8",
                                  "Authorization" : "Bearer " + $rootScope.token
@@ -599,7 +599,7 @@ angular.module('smtApp.controllers', [])
 
 })
 
-.controller('LoanDetailCtrl', function($scope, $rootScope, $stateParams, dataService, $ionicPopup, $http, $state, $ionicHistory, Utils, $ionicLoading) { 
+.controller('LoanDetailCtrl', function($scope, $rootScope, $stateParams, dataService, $ionicPopup, $http, $state, configService, $ionicHistory, Utils, $ionicLoading) { 
 
     $rootScope.showFilter = false;
     
@@ -660,7 +660,7 @@ angular.module('smtApp.controllers', [])
                     
                     $http({
                           method: 'PUT',
-                          url: url_base_api + 'loans/' + itemParsed._id,
+                          url: configService.url_base_api + 'loans/' + itemParsed._id,
                           headers: {
                              "Accept": "application/json;charset=utf-8",
                              "Authorization" : "Bearer " + $rootScope.token
@@ -692,7 +692,7 @@ angular.module('smtApp.controllers', [])
 
 })
 
-.controller('RequestsCtrl', function($scope, $http, $rootScope, dataService, Utils, $ionicListDelegate, $ionicPopup, $state, $http, $ionicLoading, $ionicTabsDelegate) {
+.controller('RequestsCtrl', function($scope, $http, $rootScope, dataService, Utils, $ionicListDelegate, $ionicPopup, $state, $http, configService, $ionicLoading, $ionicTabsDelegate) {
     
         $scope.selectedFilter = 0;
     
@@ -745,7 +745,7 @@ angular.module('smtApp.controllers', [])
 
                         $http({
                               method: 'PUT',
-                              url: url_base_api + 'loans/' + request._id,
+                              url: configService.url_base_api + 'loans/' + request._id,
                               headers: {
                                  "Accept": "application/json;charset=utf-8",
                                  "Authorization" : "Bearer " + $rootScope.token
@@ -817,7 +817,7 @@ angular.module('smtApp.controllers', [])
 
                     $http({
                           method: 'PUT',
-                          url: url_base_api + 'loans/' + request._id,
+                          url: configService.url_base_api + 'loans/' + request._id,
                           headers: {
                              "Accept": "application/json;charset=utf-8",
                              "Authorization" : "Bearer " + $rootScope.token
@@ -883,9 +883,7 @@ angular.module('smtApp.controllers', [])
     
     })
 
-
-
-.controller('RequestsDetailCtrl', function($scope, $rootScope, $stateParams, $ionicPopup, $http, $state, dataService, Utils, $ionicLoading) {
+.controller('RequestsDetailCtrl', function($scope, $rootScope, $stateParams, $ionicPopup, $http, $state, dataService, configService, Utils, $ionicLoading) {
     
     $rootScope.showFilter = false;
     
@@ -948,7 +946,7 @@ angular.module('smtApp.controllers', [])
 
                     $http({
                           method: 'PUT',
-                          url: url_base_api + 'loans/' + request._id,
+                          url: configService.url_base_api + 'loans/' + request._id,
                           headers: {
                              "Accept": "application/json;charset=utf-8",
                              "Authorization" : "Bearer " + $rootScope.token
@@ -1006,7 +1004,7 @@ angular.module('smtApp.controllers', [])
 
                     $http({
                           method: 'PUT',
-                          url: url_base_api + 'loans/' + request._id,
+                          url: configService.url_base_api + 'loans/' + request._id,
                           headers: {
                              "Accept": "application/json;charset=utf-8",
                              "Authorization" : "Bearer " + $rootScope.token

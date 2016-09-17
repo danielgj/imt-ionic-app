@@ -3,7 +3,7 @@ angular.module('smtApp.services', [])
 .service('configService',function() {
         var config = {};
     
-        config.url_api = 'url_to_api_here';        
+        config.url_base_api = 'your_api_url_here';        
         return config;
 })
 
@@ -14,7 +14,7 @@ angular.module('smtApp.services', [])
             
                 return $http({
                   method: 'GET',
-                  url: configService.url_api + object_url,
+                  url: configService.url_base_api + object_url,
                   headers: {
                         "Accept": "application/json;charset=utf-8",
                         "Authorization": "bearer " + $rootScope.token

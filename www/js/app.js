@@ -1,7 +1,5 @@
 // Ionic Starter App
 
-var url_base_api = "url_to_api_here";
-
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
@@ -31,6 +29,7 @@ angular.module('smtApp', ['ionic', 'ngCordova', 'smtApp.controllers', 'smtApp.se
   
 $ionicConfigProvider.navBar.alignTitle('center');    
 $ionicConfigProvider.views.maxCache(0);
+$ionicConfigProvider.tabs.position('bottom');
 $stateProvider
   
   
