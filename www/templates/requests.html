@@ -5,7 +5,7 @@
           <div class="row">
             <div class="col col-67">
                 <h1 class="title">{{item.item.name}}</h1>
-                {{item.updatedAt | date}}
+                {{item.user.firstname}} {{item.user.lastname}} at {{item.updatedAt | date}}
             </div>
             <div class="col col-33">
                 <p class="{{item.state}}">{{item.state}}</p>
