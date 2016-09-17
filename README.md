@@ -16,8 +16,10 @@ It works in conjuction with a [REST API](https://github.com/danielgj/imt-rest-ap
 
 For the app to work, API URL must be set in file www/js/services.js:
 
-`.service('configService',function() {
+```javascript
+.service('configService',function() {
         var config = {};
-        config.url_base_api = *'your_api_url_here'*;        
+        config.url_base_api = 'your_api_url_here';        
         return config;
-})`
+})
+```
